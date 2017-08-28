@@ -35,7 +35,35 @@ To run tests, do
     
 ##Technical Decisions
 * This API is a JSON API. Since there is no frontend to this application, JSON was better when making requests on the command line.
+Heroku app link : https://secure-savannah-61519.herokuapp.com/
 
+Using httpie from command line you can do the following
+````http get https://secure-savannah-61519.herokuapp.com/timecards````
+Result: 
+
+`` HTTP/1.1 200 OK
+   Cache-Control: max-age=0, private, must-revalidate
+   Connection: keep-alive
+   Content-Type: application/json; charset=utf-8
+   Date: Mon, 28 Aug 2017 19:53:57 GMT
+   Etag: W/"93ec921d36a1aa8f15cbfa119a0132ed"
+   Server: Cowboy
+   Transfer-Encoding: chunked
+   Via: 1.1 vegur
+   X-Request-Id: 224cfdd4-9dce-4d3a-8fb2-8c399e544b39
+   X-Runtime: 0.042880
+   
+   {
+       "created_at": "2017-08-28T19:53:58.193Z",
+       "id": 1,
+       "occurence": "2017-08-27",
+       "total_hours_worked": 0,
+       "updated_at": "2017-08-28T19:53:58.193Z",
+       "username": "joanne"
+   } ``
+   
+``http get https://secure-savannah-61519.herokuapp.com/time_entries``
+``http post https://secure-savannah-61519.herokuapp.com/time_entries timecard_id=1 time='2017-08-27 10:00:00' ``
 ##Assumptions
 
 ###Timecard 
@@ -61,7 +89,7 @@ Now, total hours worked is 2.
 * Put validations on Timecard and TimeEntry such that a TimeEntry is created for the same day as the parent Timecard.
 * Restrict creation of Timecard and TimeEntry so that you cannot create them for the future. 
 * Add seed data for the database 
-* Instead of 422, I would respond with 404 when resource was not found. As I think it conveys whats wrong.
+* Instead of 422, I would respond with 404 when resource was not found. As it is a better error message.
 * Add User login and password. 
 
 
