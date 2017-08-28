@@ -60,8 +60,7 @@ Now, total hours worked is 2.
 ###If I had more time
 * Put validations on Timecard and TimeEntry such that a TimeEntry is created for the same day as the parent Timecard.
 * Restrict creation of Timecard and TimeEntry so that you cannot create them for the future. 
-* Add seed data for the database
-* Productionize it and upload it to a hosting server. 
+* Add seed data for the database 
 * Instead of 422, I would respond with 404 when resource was not found. As I think it conveys whats wrong.
 * Add User login and password. 
 
