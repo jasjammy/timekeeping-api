@@ -9,9 +9,7 @@ This application helps you keep track of your time. You can interact with it usi
 Version 2.3.1 is currently used and we don't guarantee everything works with other versions. If you need multiple versions of Ruby, RVM is recommended.
 * Rails version : Rails 5.1.3
 * Bundler : ````gem install bundler````
-* A database. Only MySQL 5.7 has been tested, so we give no guarantees that other databases (e.g. PostgreSQL) work. You can install MySQL Community Server two ways:
-  If you are on a Mac, use homebrew: ````brew install mysql```` (highly recommended). 
-  
+* A database. Only MySQL 5.7 has been tested, so we give no guarantees that other databases (e.g. PostgreSQL) work. 
 ###Setting up development environment
 1. Get the code. Clone this git repository and check out the latest release:
 ```git clone git:git@github.com:jasjammy/timekeeping-api.git```
@@ -34,11 +32,15 @@ To run tests, do
     * Factory Girl : Testing
     * Faker : Faking data
     
+    
+##Technical Decisions
+* This API is a JSON API. Since there is no frontend to this application, JSON was better when making requests on the command line.
+
 ##Assumptions
 
 ###Timecard 
 A Timecard is the model that has username and occurence. It has many Time Enteries.
-I assume, that a Timecard is per day.
+I assume, that there is a Timecard per day. I assume that the user is only entering a Timecard for that day. 
 
 ###Time Entry
 A Time Entry belongs to only one Timecard. A Time Entry can represent a start or end time. This depends on the other entries for that Timecard.
@@ -59,8 +61,9 @@ Now, total hours worked is 2.
 * Put validations on Timecard and TimeEntry such that a TimeEntry is created for the same day as the parent Timecard.
 * Restrict creation of Timecard and TimeEntry so that you cannot create them for the future. 
 * Add seed data for the database
-* Productionize it and upload it to a hosting server
+* Productionize it and upload it to a hosting server. 
+* Instead of 422, I would respond with 404 when resource was not found. As I think it conveys whats wrong.
 * Add User login and password. 
-* Add Categories for the Timecards
+
 
 

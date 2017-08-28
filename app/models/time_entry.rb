@@ -27,7 +27,7 @@ class TimeEntry < ApplicationRecord
       start_time = time_entries[i].time
       end_time = time_entries[i+1].time
       i = i+2
-      total_hours = total_hours+  time_diff(start_time, end_time).to_i
+      total_hours = total_hours +  time_diff(start_time, end_time).to_i
     end
 
     if time_entries_count == 1
@@ -39,6 +39,7 @@ class TimeEntry < ApplicationRecord
   end
 
   private
+
     # Calculates the hours difference from start_time <DateTime> to
     # end_time <DateTime>
     def time_diff(start_time, end_time)
