@@ -1,9 +1,11 @@
 require 'rails_helper'
-
+# This spec tests the TimeEntry model
 RSpec.describe TimeEntry, type: :model do
+  # Testing validations and associations
   it { should validate_presence_of(:time) }
   it { should belong_to(:time_card) }
 
+  # Testing hours_worked
   let!(:time_card) {create(:time_card)}
   let!(:time_card_id) { time_card.id }
   describe 'update time card hours worked' do

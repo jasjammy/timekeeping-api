@@ -3,7 +3,6 @@ RSpec.describe 'Time Card spec', type: :request  do
   let!(:time_cards) { create_list(:time_card, 10) }
   let(:time_card_id) { time_cards.first.id }
 
-  # GET /timecards
   describe 'GET /timecards' do
     before { get "/timecards" }
 
